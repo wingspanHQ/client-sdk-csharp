@@ -1,0 +1,25 @@
+name: Generate Client SDKs for Wingspan experiments
+'on':
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Force generation of SDKs
+        type: boolean
+        default: false
+  schedule:
+  - cron: 0 1 * * 1
+jobs:
+  generate:
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v14
+    with:
+      openapi_doc_location: "https://docs.wingspan.app/openapi/${{ vars.README_OPENAPI_ID_BENEFITS }}"
+      speakeasy_version: latest
+      languages: |-
+        - csharp : ./experiments
+      create_release: true
+      mode: pr
+      force: ${{ github.event.inputs.force }}
+      publish_csharp: true
+    secrets:
+      github_access_token: ${{ secrets.ADMIN_PERSONAL_ACCESS_TOKEN }}
+      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
