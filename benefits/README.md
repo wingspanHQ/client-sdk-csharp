@@ -15,19 +15,17 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 - [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/productionize-sdks/publish-sdks)
 - [ ] ✨ When ready to productionize, delete this section from the README
 <!-- Start SDK Installation -->
-# SDK Installation
+## SDK Installation
 
-## Nuget
+### Nuget
 
 ```bash
-dotnet add package openapi
+dotnet add package WingspanBenefits
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```csharp
 using SDK;
 using SDK.Models.Operations;
@@ -41,9 +39,9 @@ var res = await sdk.SDK.GetBenefitsEnrollmentIdAsync("string");
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-# Available Resources and Operations
+## Available Resources and Operations
 
-## [SDK](docs/sdks/sdk/README.md)
+### [SDK](docs/sdks/sdk/README.md)
 
 * [GetBenefitsEnrollmentId](docs/sdks/sdk/README.md#getbenefitsenrollmentid) - Retrieve Enrollment Details for a Specific Member
 * [GetBenefitsPlanEnrollment](docs/sdks/sdk/README.md#getbenefitsplanenrollment) - List all plan enrollments
@@ -53,8 +51,6 @@ var res = await sdk.SDK.GetBenefitsEnrollmentIdAsync("string");
 <!-- End SDK Available Operations -->
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
