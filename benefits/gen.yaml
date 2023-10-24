@@ -9,4 +9,4 @@ csharp:
   author: Wingspan Networks, Inc.
   flattenGlobalSecurity: true
   maxMethodParams: "0"
-  packageName: '@wingspan/benefits'
+  packageName: 'WingspanBenefits'
