@@ -28,4 +28,4 @@ Based on:
 ### Generated
 - [csharp v1.1.0] benefits
 ### Releases
-- [NuGet v1.1.0] https://www.nuget.org/packages/WingspanBenefits/1.1.0 - benefits
+- [NuGet v1.0.0] https://www.nuget.org/packages/WingspanBenefits/1.0.0 - benefits
