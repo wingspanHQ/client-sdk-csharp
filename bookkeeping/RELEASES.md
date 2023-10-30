@@ -8,4 +8,4 @@ Based on:
 ### Generated
 - [csharp v0.1.0] bookkeeping
 ### Releases
-- [NuGet v0.1.0] https://www.nuget.org/packages/openapi/0.1.0 - bookkeeping
+- [NuGet v0.1.0] https://www.nuget.org/packages/WingspanBookkeeping/0.1.0 - bookkeeping
