@@ -6,6 +6,6 @@ Based on:
 - OpenAPI Doc 1.0.0 https://docs.wingspan.app/openapi/6470f38d65c260000c025474
 - Speakeasy CLI 1.109.0 (2.173.0) https://github.com/speakeasy-api/speakeasy
 ### Generated
-- [csharp v0.1.0] cms
+- [csharp v1.0.0] cms
 ### Releases
-- [NuGet v0.1.0] https://www.nuget.org/packages/openapi/0.1.0 - cms
+- [NuGet v1.0.0] https://www.nuget.org/packages/WingspanCMS/1.0.0 - cms
