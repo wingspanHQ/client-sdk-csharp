@@ -14,10 +14,10 @@ features:
     flattening: 2.81.1
     globalServerURLs: 2.82.0
 csharp:
-  version: 0.1.0
-  author: Speakeasy
+  version: 1.0.0
+  author: Wingspan Networks, Inc.
   dotnetVersion: net5.0
   maxMethodParams: 4
-  packageName: openapi
+  packageName: WingspanNotifications
   published: true
   repoSubDirectory: notifications
