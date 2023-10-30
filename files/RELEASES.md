@@ -18,4 +18,4 @@ Based on:
 ### Generated
 - [csharp v0.2.0] files
 ### Releases
-- [NuGet v0.2.0] https://www.nuget.org/packages/openapi/0.2.0 - files
+- [NuGet v1.0.0] https://www.nuget.org/packages/WingspanFiles/1.0.0 - files
