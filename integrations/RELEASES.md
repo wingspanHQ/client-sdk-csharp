@@ -16,6 +16,6 @@ Based on:
 - OpenAPI Doc 1.0.0 https://docs.wingspan.app/openapi/6470f38d65c260000c025474
 - Speakeasy CLI 1.109.0 (2.173.0) https://github.com/speakeasy-api/speakeasy
 ### Generated
-- [csharp v0.2.0] integrations
+- [csharp v1.0.0] integrations
 ### Releases
-- [NuGet v0.2.0] https://www.nuget.org/packages/openapi/0.2.0 - integrations
+- [NuGet v1.0.0] https://www.nuget.org/packages/WingspanIntegrations/1.0.0 - integrations
