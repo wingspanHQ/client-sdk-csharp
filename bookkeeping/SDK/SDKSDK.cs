@@ -81,10 +81,10 @@ namespace SDK
         };
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.2.0";
+        private const string _sdkVersion = "1.0.0";
         private const string _sdkGenVersion = "2.173.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.2.0 2.173.0 1.0.0 WingspanBookkeeping";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0 2.173.0 1.0.0 WingspanBookkeeping";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
