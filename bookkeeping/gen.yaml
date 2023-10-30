@@ -15,9 +15,9 @@ features:
     globalServerURLs: 2.82.0
 csharp:
   version: 0.1.0
-  author: Speakeasy
+  author: Wingspan Networks, Inc.
   dotnetVersion: net5.0
   maxMethodParams: 4
-  packageName: openapi
+  packageName: WingspanBookkeeping
   published: true
   repoSubDirectory: bookkeeping
