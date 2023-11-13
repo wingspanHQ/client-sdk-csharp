@@ -26,13 +26,15 @@ dotnet add package WingspanBenefits
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+### Example
+
 ```csharp
-using SDK;
-using SDK.Models.Operations;
+using WingspanBenefits;
+using WingspanBenefits.Models.Operations;
 
-var sdk = new SDKSDK();
+var sdk = new SDK();
 
-var res = await sdk.SDK.GetBenefitsEnrollmentIdAsync("string");
+var res = await sdk.GetBenefitsEnrollmentIdAsync("string");
 
 // handle response
 ```
