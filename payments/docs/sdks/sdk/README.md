@@ -20,12 +20,12 @@ Fetches the enrollment status and details for a member identified by the provide
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Operations;
+using WingspanPayments;
+using WingspanPayments.Models.Operations;
 
-var sdk = new SDKSDK();
+var sdk = new SDK();
 
-var res = await sdk.SDK.GetBenefitsEnrollmentIdAsync("string");
+var res = await sdk.GetBenefitsEnrollmentIdAsync("string");
 
 // handle response
 ```
@@ -39,7 +39,7 @@ var res = await sdk.SDK.GetBenefitsEnrollmentIdAsync("string");
 
 ### Response
 
-**[GetBenefitsEnrollmentIdResponse](../../models/operations/GetBenefitsEnrollmentIdResponse.md)**
+**[GetBenefitsEnrollmentIdResponse](../../Models/Operations/GetBenefitsEnrollmentIdResponse.md)**
 
 
 ## GetBenefitsPlanEnrollment
@@ -49,11 +49,11 @@ List all plan enrollments
 ### Example Usage
 
 ```csharp
-using SDK;
+using WingspanPayments;
 
-var sdk = new SDKSDK();
+var sdk = new SDK();
 
-var res = await sdk.SDK.GetBenefitsPlanEnrollmentAsync();
+var res = await sdk.GetBenefitsPlanEnrollmentAsync();
 
 // handle response
 ```
@@ -61,7 +61,7 @@ var res = await sdk.SDK.GetBenefitsPlanEnrollmentAsync();
 
 ### Response
 
-**[GetBenefitsPlanEnrollmentResponse](../../models/operations/GetBenefitsPlanEnrollmentResponse.md)**
+**[GetBenefitsPlanEnrollmentResponse](../../Models/Operations/GetBenefitsPlanEnrollmentResponse.md)**
 
 
 ## GetBenefitsPlanEnrollmentId
@@ -71,12 +71,12 @@ Get a particular plan enrollment by ID
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Operations;
+using WingspanPayments;
+using WingspanPayments.Models.Operations;
 
-var sdk = new SDKSDK();
+var sdk = new SDK();
 
-var res = await sdk.SDK.GetBenefitsPlanEnrollmentIdAsync("string");
+var res = await sdk.GetBenefitsPlanEnrollmentIdAsync("string");
 
 // handle response
 ```
@@ -90,7 +90,7 @@ var res = await sdk.SDK.GetBenefitsPlanEnrollmentIdAsync("string");
 
 ### Response
 
-**[GetBenefitsPlanEnrollmentIdResponse](../../models/operations/GetBenefitsPlanEnrollmentIdResponse.md)**
+**[GetBenefitsPlanEnrollmentIdResponse](../../Models/Operations/GetBenefitsPlanEnrollmentIdResponse.md)**
 
 
 ## GetBenefitsService
@@ -100,11 +100,11 @@ Fetches the current status indicating whether the benefits service is enabled or
 ### Example Usage
 
 ```csharp
-using SDK;
+using WingspanPayments;
 
-var sdk = new SDKSDK();
+var sdk = new SDK();
 
-var res = await sdk.SDK.GetBenefitsServiceAsync();
+var res = await sdk.GetBenefitsServiceAsync();
 
 // handle response
 ```
@@ -112,7 +112,7 @@ var res = await sdk.SDK.GetBenefitsServiceAsync();
 
 ### Response
 
-**[GetBenefitsServiceResponse](../../models/operations/GetBenefitsServiceResponse.md)**
+**[GetBenefitsServiceResponse](../../Models/Operations/GetBenefitsServiceResponse.md)**
 
 
 ## PatchBenefitsServiceId
@@ -122,13 +122,13 @@ Allows users to change the enablement status of a specified benefits service.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Operations;
-using SDK.Models.Shared;
+using WingspanPayments;
+using WingspanPayments.Models.Operations;
+using WingspanPayments.Models.Shared;
 
-var sdk = new SDKSDK();
+var sdk = new SDK();
 
-var res = await sdk.SDK.PatchBenefitsServiceIdAsync("string", new ServiceEnablementUpdate() {
+var res = await sdk.PatchBenefitsServiceIdAsync("string", new ServiceEnablementUpdate() {
     Enabled = false,
 });
 
@@ -140,10 +140,10 @@ var res = await sdk.SDK.PatchBenefitsServiceIdAsync("string", new ServiceEnablem
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `Id`                                                                      | *string*                                                                  | :heavy_check_mark:                                                        | Unique identifier                                                         |
-| `ServiceEnablementUpdate`                                                 | [ServiceEnablementUpdate](../../models/shared/ServiceEnablementUpdate.md) | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `ServiceEnablementUpdate`                                                 | [ServiceEnablementUpdate](../../Models/Shared/ServiceEnablementUpdate.md) | :heavy_minus_sign:                                                        | N/A                                                                       |
 
 
 ### Response
 
-**[PatchBenefitsServiceIdResponse](../../models/operations/PatchBenefitsServiceIdResponse.md)**
+**[PatchBenefitsServiceIdResponse](../../Models/Operations/PatchBenefitsServiceIdResponse.md)**
 

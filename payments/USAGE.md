@@ -1,13 +1,11 @@
 <!-- Start SDK Example Usage -->
-
-
 ```csharp
-using SDK;
-using SDK.Models.Operations;
+using WingspanPayments;
+using WingspanPayments.Models.Operations;
 
-var sdk = new SDKSDK();
+var sdk = new SDK();
 
-var res = await sdk.SDK.GetBenefitsEnrollmentIdAsync("string");
+var res = await sdk.GetBenefitsEnrollmentIdAsync("string");
 
 // handle response
 ```
