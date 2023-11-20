@@ -10,15 +10,14 @@
 #nullable enable
 namespace WingspanIntegrations
 {
-    using Newtonsoft.Json;
     using System.Collections.Generic;
-    using System.Net.Http.Headers;
     using System.Net.Http;
     using System.Threading.Tasks;
     using System;
-    using WingspanIntegrations.Models.Operations;
     using WingspanIntegrations.Models.Shared;
     using WingspanIntegrations.Utils;
+
+
 
     /// <summary>
     /// Wingspan Benefits API: Benefits
@@ -27,45 +26,35 @@ namespace WingspanIntegrations
     {
 
         /// <summary>
-        /// Retrieve Enrollment Details for a Specific Member
-        /// 
-        /// <remarks>
-        /// Fetches the enrollment status and details for a member identified by the provided unique identifier.
-        /// </remarks>
+        /// Operations related to enrollments
         /// </summary>
-        Task<GetBenefitsEnrollmentIdResponse> GetBenefitsEnrollmentIdAsync(string id);
+        public IBenefitsEnrollment BenefitsEnrollment { get; }
 
         /// <summary>
-        /// List all plan enrollments
+        /// Operations related to service management
         /// </summary>
-        Task<GetBenefitsPlanEnrollmentResponse> GetBenefitsPlanEnrollmentAsync();
-
-        /// <summary>
-        /// Get a particular plan enrollment by ID
-        /// </summary>
-        Task<GetBenefitsPlanEnrollmentIdResponse> GetBenefitsPlanEnrollmentIdAsync(string id);
-
-        /// <summary>
-        /// Retrieve Current Benefits Service Status
-        /// 
-        /// <remarks>
-        /// Fetches the current status indicating whether the benefits service is enabled or disabled.
-        /// </remarks>
-        /// </summary>
-        Task<GetBenefitsServiceResponse> GetBenefitsServiceAsync();
-
-        /// <summary>
-        /// Modify Benefits Service Status
-        /// 
-        /// <remarks>
-        /// Allows users to change the enablement status of a specified benefits service.
-        /// </remarks>
-        /// </summary>
-        Task<PatchBenefitsServiceIdResponse> PatchBenefitsServiceIdAsync(string id, ServiceEnablementUpdate? serviceEnablementUpdate = null);
+        public IBenefitsService BenefitsService { get; }
     }
     
     public class SDKConfig
     {
+        public static string[] ServerList = new string[]
+        {
+            "https://api.wingspan.app/benefits",
+            "https://stagingapi.wingspan.app/benefits",
+        };
+        /// Contains the list of servers available to the SDK
+        public string serverUrl = "";
+        public int serverIndex = 0;
+
+        public string GetTemplatedServerDetails()
+        {
+            if (!String.IsNullOrEmpty(this.serverUrl))
+            {
+                return Utilities.TemplateUrl(Utilities.RemoveSuffix(this.serverUrl, "/"), new Dictionary<string, string>());
+            }
+            return Utilities.TemplateUrl(SDKConfig.ServerList[this.serverIndex], new Dictionary<string, string>());
+        }
     }
 
     /// <summary>
@@ -74,245 +63,42 @@ namespace WingspanIntegrations
     public class SDK: ISDK
     {
         public SDKConfig Config { get; private set; }
-        public static List<string> ServerList = new List<string>()
-        {
-            "https://api.wingspan.app/benefits",
-            "https://stagingapi.wingspan.app/benefits",
-        };
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.0.0";
-        private const string _sdkGenVersion = "2.188.1";
+        private const string _sdkVersion = "2.0.1";
+        private const string _sdkGenVersion = "2.194.1";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.0.0 2.188.1 1.0.0 WingspanIntegrations";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.0.1 2.194.1 1.0.0 WingspanIntegrations";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
+        public IBenefitsEnrollment BenefitsEnrollment { get; private set; }
+        public IBenefitsService BenefitsService { get; private set; }
 
-        public SDK(string? serverUrl = null, ISpeakeasyHttpClient? client = null)
+        public SDK(Security? security = null, int? serverIndex = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
         {
-            _serverUrl = serverUrl ?? SDK.ServerList[0];
+            if (serverUrl != null) {
+                if (urlParams != null) {
+                    serverUrl = Utilities.TemplateUrl(serverUrl, urlParams);
+                }
+                _serverUrl = serverUrl;
+            }
 
             _defaultClient = new SpeakeasyHttpClient(client);
             _securityClient = _defaultClient;
             
+            if(security != null)
+            {
+                _securityClient = SecuritySerializer.Apply(_defaultClient, security);
+            }
+            
             Config = new SDKConfig()
             {
+                serverUrl = _serverUrl
             };
 
-        }
-
-        public async Task<GetBenefitsEnrollmentIdResponse> GetBenefitsEnrollmentIdAsync(string id)
-        {
-            var request = new GetBenefitsEnrollmentIdRequest()
-            {
-                Id = id,
-            };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
-            var urlString = URLBuilder.Build(baseUrl, "/benefits/enrollment/{id}", request);
-            
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _defaultClient;
-            
-            var httpResponse = await client.SendAsync(httpRequest);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
-            var response = new GetBenefitsEnrollmentIdResponse
-            {
-                StatusCode = (int)httpResponse.StatusCode,
-                ContentType = contentType,
-                RawResponse = httpResponse
-            };
-            
-            if((response.StatusCode == 200))
-            {
-                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
-                {
-                    response.Enrollment = JsonConvert.DeserializeObject<Enrollment>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
-                }
-                
-                return response;
-            }
-            return response;
-        }
-
-        public async Task<GetBenefitsPlanEnrollmentResponse> GetBenefitsPlanEnrollmentAsync()
-        {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
-            var urlString = baseUrl + "/benefits/plan-enrollment";
-            
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _defaultClient;
-            
-            var httpResponse = await client.SendAsync(httpRequest);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
-            var response = new GetBenefitsPlanEnrollmentResponse
-            {
-                StatusCode = (int)httpResponse.StatusCode,
-                ContentType = contentType,
-                RawResponse = httpResponse
-            };
-            
-            if((response.StatusCode == 200))
-            {
-                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
-                {
-                    response.Classes = JsonConvert.DeserializeObject<List<PlanEnrollment>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
-                }
-                
-                return response;
-            }
-            return response;
-        }
-
-        public async Task<GetBenefitsPlanEnrollmentIdResponse> GetBenefitsPlanEnrollmentIdAsync(string id)
-        {
-            var request = new GetBenefitsPlanEnrollmentIdRequest()
-            {
-                Id = id,
-            };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
-            var urlString = URLBuilder.Build(baseUrl, "/benefits/plan-enrollment/{id}", request);
-            
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _defaultClient;
-            
-            var httpResponse = await client.SendAsync(httpRequest);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
-            var response = new GetBenefitsPlanEnrollmentIdResponse
-            {
-                StatusCode = (int)httpResponse.StatusCode,
-                ContentType = contentType,
-                RawResponse = httpResponse
-            };
-            
-            if((response.StatusCode == 200))
-            {
-                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
-                {
-                    response.PlanEnrollment = JsonConvert.DeserializeObject<PlanEnrollment>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
-                }
-                
-                return response;
-            }
-            return response;
-        }
-
-        public async Task<GetBenefitsServiceResponse> GetBenefitsServiceAsync()
-        {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
-            var urlString = baseUrl + "/benefits/service";
-            
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _defaultClient;
-            
-            var httpResponse = await client.SendAsync(httpRequest);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
-            var response = new GetBenefitsServiceResponse
-            {
-                StatusCode = (int)httpResponse.StatusCode,
-                ContentType = contentType,
-                RawResponse = httpResponse
-            };
-            
-            if((response.StatusCode == 200))
-            {
-                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
-                {
-                    response.ServiceEnablementResponse = JsonConvert.DeserializeObject<ServiceEnablementResponse>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
-                }
-                
-                return response;
-            }
-            return response;
-        }
-
-        public async Task<PatchBenefitsServiceIdResponse> PatchBenefitsServiceIdAsync(string id, ServiceEnablementUpdate? serviceEnablementUpdate = null)
-        {
-            var request = new PatchBenefitsServiceIdRequest()
-            {
-                Id = id,
-                ServiceEnablementUpdate = serviceEnablementUpdate,
-            };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
-            var urlString = URLBuilder.Build(baseUrl, "/benefits/service/{id}", request);
-            
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            var serializedBody = RequestBodySerializer.Serialize(request, "ServiceEnablementUpdate", "json");
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
-            
-            var client = _defaultClient;
-            
-            var httpResponse = await client.SendAsync(httpRequest);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
-            var response = new PatchBenefitsServiceIdResponse
-            {
-                StatusCode = (int)httpResponse.StatusCode,
-                ContentType = contentType,
-                RawResponse = httpResponse
-            };
-            
-            if((response.StatusCode == 200))
-            {
-                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
-                {
-                    response.ServiceEnablementResponse = JsonConvert.DeserializeObject<ServiceEnablementResponse>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
-                }
-                
-                return response;
-            }
-            return response;
+            BenefitsEnrollment = new BenefitsEnrollment(_defaultClient, _securityClient, _serverUrl, Config);
+            BenefitsService = new BenefitsService(_defaultClient, _securityClient, _serverUrl, Config);
         }
     }
 }
