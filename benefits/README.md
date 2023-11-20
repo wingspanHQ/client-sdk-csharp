@@ -30,11 +30,16 @@ dotnet add package WingspanBenefits
 
 ```csharp
 using WingspanBenefits;
+using WingspanBenefits.Models.Shared;
 using WingspanBenefits.Models.Operations;
 
-var sdk = new SDK();
+var sdk = new SDK(
+    security: new Security() {
+        BearerAuth = "",
+    }
+);
 
-var res = await sdk.GetBenefitsEnrollmentIdAsync("string");
+var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync("string");
 
 // handle response
 ```
@@ -43,13 +48,17 @@ var res = await sdk.GetBenefitsEnrollmentIdAsync("string");
 <!-- Start SDK Available Operations -->
 ## Available Resources and Operations
 
-### [SDK](docs/sdks/sdk/README.md)
 
-* [GetBenefitsEnrollmentId](docs/sdks/sdk/README.md#getbenefitsenrollmentid) - Retrieve Enrollment Details for a Specific Member
-* [GetBenefitsPlanEnrollment](docs/sdks/sdk/README.md#getbenefitsplanenrollment) - List all plan enrollments
-* [GetBenefitsPlanEnrollmentId](docs/sdks/sdk/README.md#getbenefitsplanenrollmentid) - Get a particular plan enrollment by ID
-* [GetBenefitsService](docs/sdks/sdk/README.md#getbenefitsservice) - Retrieve Current Benefits Service Status
-* [PatchBenefitsServiceId](docs/sdks/sdk/README.md#patchbenefitsserviceid) - Modify Benefits Service Status
+### [BenefitsEnrollment](docs/sdks/benefitsenrollment/README.md)
+
+* [GetBenefitsEnrollmentId](docs/sdks/benefitsenrollment/README.md#getbenefitsenrollmentid) - Retrieve Enrollment Details for a Specific Member
+* [GetBenefitsPlanEnrollment](docs/sdks/benefitsenrollment/README.md#getbenefitsplanenrollment) - List all plan enrollments
+* [GetBenefitsPlanEnrollmentId](docs/sdks/benefitsenrollment/README.md#getbenefitsplanenrollmentid) - Get a particular plan enrollment by ID
+
+### [BenefitsService](docs/sdks/benefitsservice/README.md)
+
+* [GetBenefitsService](docs/sdks/benefitsservice/README.md#getbenefitsservice) - Retrieve Current Benefits Service Status
+* [PatchBenefitsServiceId](docs/sdks/benefitsservice/README.md#patchbenefitsserviceid) - Modify Benefits Service Status
 <!-- End SDK Available Operations -->
 
 <!-- Start Dev Containers -->

@@ -24,5 +24,8 @@ namespace WingspanBenefits.Models.Shared
 
         [JsonProperty("serviceState")]
         public ServiceState ServiceState { get; set; } = default!;
+
+        [JsonProperty("test")]
+        public string? Test { get; set; }
     }
 }
