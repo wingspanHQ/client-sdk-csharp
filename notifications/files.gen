@@ -1,3 +1,5 @@
+WingspanNotifications/BenefitsEnrollment.cs
+WingspanNotifications/BenefitsService.cs
 WingspanNotifications/SDK.cs
 WingspanNotifications/Utils/BigIntSerializer.cs
 WingspanNotifications/Utils/DecimalSerializer.cs
@@ -34,6 +36,7 @@ WingspanNotifications/Models/Shared/A71f30be878693b235f8c5f1650be03c9920ca982152
 WingspanNotifications/Models/Shared/ServiceState.cs
 WingspanNotifications/Models/Shared/ServiceEnablementResponse.cs
 WingspanNotifications/Models/Shared/ServiceEnablementUpdate.cs
+WingspanNotifications/Models/Shared/Security.cs
 USAGE.md
 docs/Models/Operations/GetBenefitsEnrollmentIdRequest.md
 docs/Models/Operations/GetBenefitsEnrollmentIdResponse.md
@@ -56,5 +59,8 @@ docs/Models/Shared/A71f30be878693b235f8c5f1650be03c9920ca9821526545760476436104c
 docs/Models/Shared/ServiceState.md
 docs/Models/Shared/ServiceEnablementResponse.md
 docs/Models/Shared/ServiceEnablementUpdate.md
+docs/Models/Shared/Security.md
 docs/sdks/sdk/README.md
+docs/sdks/benefitsenrollment/README.md
+docs/sdks/benefitsservice/README.md
 .gitattributes
