@@ -37,7 +37,6 @@ WingspanNotifications/Models/Shared/ServiceState.cs
 WingspanNotifications/Models/Shared/ServiceEnablementResponse.cs
 WingspanNotifications/Models/Shared/ServiceEnablementUpdate.cs
 WingspanNotifications/Models/Shared/Security.cs
-USAGE.md
 docs/Models/Operations/GetBenefitsEnrollmentIdRequest.md
 docs/Models/Operations/GetBenefitsEnrollmentIdResponse.md
 docs/Models/Operations/GetBenefitsPlanEnrollmentResponse.md
@@ -60,7 +59,5 @@ docs/Models/Shared/ServiceState.md
 docs/Models/Shared/ServiceEnablementResponse.md
 docs/Models/Shared/ServiceEnablementUpdate.md
 docs/Models/Shared/Security.md
-docs/sdks/sdk/README.md
-docs/sdks/benefitsenrollment/README.md
-docs/sdks/benefitsservice/README.md
+USAGE.md
 .gitattributes
