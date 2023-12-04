@@ -10,6 +10,7 @@
 #nullable enable
 namespace WingspanPayments
 {
+    using Newtonsoft.Json;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
@@ -62,13 +63,13 @@ namespace WingspanPayments
     /// </summary>
     public class SDK: ISDK
     {
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.0.1";
-        private const string _sdkGenVersion = "2.194.1";
+        private const string _sdkVersion = "2.0.2";
+        private const string _sdkGenVersion = "2.209.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.0.1 2.194.1 1.0.0 WingspanPayments";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.0.2 2.209.0 1.0.0 WingspanPayments";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -92,13 +93,13 @@ namespace WingspanPayments
                 _securityClient = SecuritySerializer.Apply(_defaultClient, security);
             }
             
-            Config = new SDKConfig()
+            SDKConfiguration = new SDKConfig()
             {
                 serverUrl = _serverUrl
             };
 
-            BenefitsEnrollment = new BenefitsEnrollment(_defaultClient, _securityClient, _serverUrl, Config);
-            BenefitsService = new BenefitsService(_defaultClient, _securityClient, _serverUrl, Config);
+            BenefitsEnrollment = new BenefitsEnrollment(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
+            BenefitsService = new BenefitsService(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
         }
     }
 }
