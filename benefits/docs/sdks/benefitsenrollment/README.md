@@ -25,10 +25,9 @@ using WingspanBenefits.Models.Operations;
 var sdk = new SDK(
     security: new Security() {
         BearerAuth = "",
-    }
-);
+    });
 
-var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync("string");
+var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync(Id: "string");
 
 // handle response
 ```
@@ -58,8 +57,7 @@ using WingspanBenefits.Models.Shared;
 var sdk = new SDK(
     security: new Security() {
         BearerAuth = "",
-    }
-);
+    });
 
 var res = await sdk.BenefitsEnrollment.GetBenefitsPlanEnrollmentAsync();
 
@@ -86,10 +84,9 @@ using WingspanBenefits.Models.Operations;
 var sdk = new SDK(
     security: new Security() {
         BearerAuth = "",
-    }
-);
+    });
 
-var res = await sdk.BenefitsEnrollment.GetBenefitsPlanEnrollmentIdAsync("string");
+var res = await sdk.BenefitsEnrollment.GetBenefitsPlanEnrollmentIdAsync(Id: "string");
 
 // handle response
 ```

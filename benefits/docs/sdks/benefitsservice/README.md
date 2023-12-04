@@ -23,8 +23,7 @@ using WingspanBenefits.Models.Shared;
 var sdk = new SDK(
     security: new Security() {
         BearerAuth = "",
-    }
-);
+    });
 
 var res = await sdk.BenefitsService.GetBenefitsServiceAsync();
 
@@ -51,10 +50,9 @@ using WingspanBenefits.Models.Operations;
 var sdk = new SDK(
     security: new Security() {
         BearerAuth = "",
-    }
-);
+    });
 
-var res = await sdk.BenefitsService.PatchBenefitsServiceIdAsync("string", new ServiceEnablementUpdate() {
+var res = await sdk.BenefitsService.PatchBenefitsServiceIdAsync(Id: "string", ServiceEnablementUpdate: new ServiceEnablementUpdate() {
     Enabled = false,
 });
 
