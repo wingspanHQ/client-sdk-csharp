@@ -41,8 +41,8 @@ namespace WingspanBookkeeping
     {
         public static string[] ServerList = new string[]
         {
-            "https://api.wingspan.app/benefits",
-            "https://stagingapi.wingspan.app/benefits",
+            "https://api.wingspan.app",
+            "https://stagingapi.wingspan.app",
         };
         /// Contains the list of servers available to the SDK
         public string serverUrl = "";
@@ -66,10 +66,10 @@ namespace WingspanBookkeeping
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.0.2";
-        private const string _sdkGenVersion = "2.209.0";
+        private const string _sdkVersion = "2.0.3";
+        private const string _sdkGenVersion = "2.210.6";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.0.2 2.209.0 1.0.0 WingspanBookkeeping";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.0.3 2.210.6 1.0.0 WingspanBookkeeping";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
