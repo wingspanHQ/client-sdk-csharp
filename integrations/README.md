@@ -16,8 +16,8 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `https://api.wingspan.app/benefits` | None |
-| 1 | `https://stagingapi.wingspan.app/benefits` | None |
+| 0 | `https://api.wingspan.app` | None |
+| 1 | `https://stagingapi.wingspan.app` | None |
 
 
 
