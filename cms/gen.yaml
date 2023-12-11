@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: c824e39d67e613e8162e0b6ffdb4a660
+  docChecksum: a394825e1c1bc4930882a784d6d637e8
   docVersion: 1.0.0
-  speakeasyVersion: 1.125.0
-  generationVersion: 2.209.0
+  speakeasyVersion: 1.125.2
+  generationVersion: 2.210.6
 generation:
   comments: {}
   sdkClassName: SDK
@@ -17,7 +17,7 @@ features:
     globalSecurity: 2.81.1
     globalServerURLs: 2.82.2
 csharp:
-  version: 2.0.2
+  version: 2.0.3
   author: Wingspan Networks, Inc.
   dotnetVersion: net5.0
   imports:
