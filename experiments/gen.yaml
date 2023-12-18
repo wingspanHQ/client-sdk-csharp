@@ -2,22 +2,24 @@ configVersion: 1.0.0
 management:
   docChecksum: a394825e1c1bc4930882a784d6d637e8
   docVersion: 1.0.0
-  speakeasyVersion: 1.125.2
-  generationVersion: 2.210.6
+  speakeasyVersion: 1.126.4
+  generationVersion: 2.214.10
 generation:
   comments: {}
   sdkClassName: SDK
   repoURL: https://github.com/wingspanHQ/client-sdk-csharp.git
   usageSnippets:
     optionalPropertyRendering: withExample
+  fixes:
+    nameResolutionDec2023: false
 features:
   csharp:
-    core: 3.1.3
+    core: 3.2.1
     flattening: 2.81.1
-    globalSecurity: 2.81.1
+    globalSecurity: 2.81.2
     globalServerURLs: 2.82.2
 csharp:
-  version: 2.0.3
+  version: 2.1.0
   author: Wingspan Networks, Inc.
   dotnetVersion: net5.0
   imports:
