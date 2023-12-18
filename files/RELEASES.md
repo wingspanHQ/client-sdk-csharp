@@ -60,3 +60,13 @@ Based on:
 - [csharp v2.0.3] files
 ### Releases
 - [NuGet v2.0.3] https://www.nuget.org/packages/WingspanFiles/2.0.3 - files
+
+## 2023-12-18 01:27:03
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 https://docs.wingspan.app/openapi/6470f38d65c260000c025474
+- Speakeasy CLI 1.126.4 (2.214.10) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v2.1.0] files
+### Releases
+- [NuGet v2.1.0] https://www.nuget.org/packages/WingspanFiles/2.1.0 - files
