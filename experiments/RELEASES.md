@@ -60,3 +60,13 @@ Based on:
 - [csharp v2.1.0] experiments
 ### Releases
 - [NuGet v2.1.0] https://www.nuget.org/packages/WingspanExperiments/2.1.0 - experiments
+
+## 2024-01-08 01:26:29
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 https://docs.wingspan.app/openapi/6470f38d65c260000c025474
+- Speakeasy CLI 1.133.1 (2.228.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v3.0.0] experiments
+### Releases
+- [NuGet v3.0.0] https://www.nuget.org/packages/WingspanExperiments/3.0.0 - experiments
