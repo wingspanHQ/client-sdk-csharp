@@ -53,4 +53,5 @@ namespace WingspanPayments.Models.Shared
             throw new Exception($"Unknown value {value} for enum FundingStatus");
         }
     }
+
 }
