@@ -53,10 +53,10 @@ namespace WingspanNotifications
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.1.0";
-        private const string _sdkGenVersion = "2.214.10";
+        private const string _sdkVersion = "3.0.0";
+        private const string _sdkGenVersion = "2.228.1";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.214.10 1.0.0 WingspanNotifications";
+        private const string _userAgent = "speakeasy-sdk/csharp 3.0.0 2.228.1 1.0.0 WingspanNotifications";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
