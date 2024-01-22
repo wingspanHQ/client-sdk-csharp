@@ -1,23 +1,23 @@
-configVersion: 1.0.0
-management:
-  docChecksum: e377727f5ba4f1205fcadb3246757bab
-  docVersion: 1.0.0
-  speakeasyVersion: 1.109.0
-  generationVersion: 2.173.0
+configVersion: 2.0.0
 generation:
-  repoURL: https://github.com/wingspanHQ/client-sdk-csharp.git
   sdkClassName: SDK
-  singleTagPerOp: false
-features:
-  csharp:
-    core: 2.93.0
-    flattening: 2.81.1
-    globalServerURLs: 2.82.0
+  usageSnippets:
+    optionalPropertyRendering: withExample
+  fixes:
+    nameResolutionDec2023: false
 csharp:
-  version: 1.0.0
+  version: 3.0.1
   author: Wingspan Networks, Inc.
   dotnetVersion: net5.0
+  imports:
+    option: openapi
+    paths:
+      callbacks: Models/Callbacks
+      errors: Models/Errors
+      operations: Models/Operations
+      shared: Models/Shared
+      webhooks: Models/Webhooks
+  inputModelSuffix: input
   maxMethodParams: 4
+  outputModelSuffix: output
   packageName: WingspanIntegrations
-  published: true
-  repoSubDirectory: integrations
