@@ -53,10 +53,10 @@ namespace WingspanCMS
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "3.0.0";
-        private const string _sdkGenVersion = "2.228.1";
+        private const string _sdkVersion = "3.0.1";
+        private const string _sdkGenVersion = "2.237.3";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 3.0.0 2.228.1 1.0.0 WingspanCMS";
+        private const string _userAgent = "speakeasy-sdk/csharp 3.0.1 2.237.3 1.0.0 WingspanCMS";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
