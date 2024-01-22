@@ -4,17 +4,17 @@ management:
   docChecksum: a394825e1c1bc4930882a784d6d637e8
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.228.1
-  releaseVersion: 3.0.0
-  configChecksum: 4b3dfe644d62ee158985187e7b6a61ed
+  generationVersion: 2.237.3
+  releaseVersion: 3.0.1
+  configChecksum: 44bff22940a5e6425b9d7e8780dfb661
   repoURL: https://github.com/wingspanHQ/client-sdk-csharp.git
   repoSubDirectory: integrations
   published: true
 features:
   csharp:
-    core: 3.3.0
+    core: 3.3.1
     flattening: 2.81.1
-    globalSecurity: 2.81.2
+    globalSecurity: 2.81.3
     globalServerURLs: 2.82.2
 generatedFiles:
   - WingspanIntegrations/BenefitsEnrollment.cs
