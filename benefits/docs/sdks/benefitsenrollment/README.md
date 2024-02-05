@@ -22,12 +22,11 @@ using WingspanBenefits;
 using WingspanBenefits.Models.Shared;
 using WingspanBenefits.Models.Operations;
 
-var sdk = new SDK(
-    security: new Security() {
+var sdk = new SDK(security: new Security() {
         BearerAuth = "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync(Id: "string");
+var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync(id: "string");
 
 // handle response
 ```
@@ -54,8 +53,7 @@ List all plan enrollments
 using WingspanBenefits;
 using WingspanBenefits.Models.Shared;
 
-var sdk = new SDK(
-    security: new Security() {
+var sdk = new SDK(security: new Security() {
         BearerAuth = "<YOUR_BEARER_TOKEN_HERE>",
     });
 
@@ -81,12 +79,11 @@ using WingspanBenefits;
 using WingspanBenefits.Models.Shared;
 using WingspanBenefits.Models.Operations;
 
-var sdk = new SDK(
-    security: new Security() {
+var sdk = new SDK(security: new Security() {
         BearerAuth = "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-var res = await sdk.BenefitsEnrollment.GetBenefitsPlanEnrollmentIdAsync(Id: "string");
+var res = await sdk.BenefitsEnrollment.GetBenefitsPlanEnrollmentIdAsync(id: "string");
 
 // handle response
 ```

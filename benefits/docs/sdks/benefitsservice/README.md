@@ -20,8 +20,7 @@ Fetches the current status indicating whether the benefits service is enabled or
 using WingspanBenefits;
 using WingspanBenefits.Models.Shared;
 
-var sdk = new SDK(
-    security: new Security() {
+var sdk = new SDK(security: new Security() {
         BearerAuth = "<YOUR_BEARER_TOKEN_HERE>",
     });
 
@@ -47,12 +46,13 @@ using WingspanBenefits;
 using WingspanBenefits.Models.Shared;
 using WingspanBenefits.Models.Operations;
 
-var sdk = new SDK(
-    security: new Security() {
+var sdk = new SDK(security: new Security() {
         BearerAuth = "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-var res = await sdk.BenefitsService.PatchBenefitsServiceIdAsync(Id: "string", ServiceEnablementUpdate: new ServiceEnablementUpdate() {
+var res = await sdk.BenefitsService.PatchBenefitsServiceIdAsync(
+    id: "string",
+    serviceEnablementUpdate: new ServiceEnablementUpdate() {
     Enabled = false,
 });
 
