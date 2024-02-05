@@ -4,12 +4,11 @@ using WingspanFiles;
 using WingspanFiles.Models.Shared;
 using WingspanFiles.Models.Operations;
 
-var sdk = new SDK(
-    security: new Security() {
+var sdk = new SDK(security: new Security() {
         BearerAuth = "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync(Id: "string");
+var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync(id: "string");
 
 // handle response
 ```
