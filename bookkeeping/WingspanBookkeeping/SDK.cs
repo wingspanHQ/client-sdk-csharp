@@ -66,18 +66,18 @@ namespace WingspanBookkeeping
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "4.0.0";
-        private const string _sdkGenVersion = "2.248.6";
+        private const string _sdkVersion = "4.1.0";
+        private const string _sdkGenVersion = "2.252.2";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 4.0.0 2.248.6 1.0.0 WingspanBookkeeping";
+        private const string _userAgent = "speakeasy-sdk/csharp 4.1.0 2.252.2 1.0.0 WingspanBookkeeping";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
         public IBenefitsEnrollment BenefitsEnrollment { get; private set; }
         public IBenefitsService BenefitsService { get; private set; }
 
-        public SDK(Security? security = null, int? serverIndex = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
+        public SDK(Security? security = null, Func<Security>? securitySource = null, int? serverIndex = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
         {
             if (serverIndex != null)
             {
@@ -94,11 +94,14 @@ namespace WingspanBookkeeping
             }
 
             _defaultClient = new SpeakeasyHttpClient(client);
-            _securityClient = _defaultClient;
 
-            if(security != null)
+            if(securitySource != null)
             {
-                _securityClient = SecuritySerializer.Apply(_defaultClient, security);
+                _securitySource = securitySource;
+            }
+            else if(security != null)
+            {
+                _securitySource = () => security;
             }
 
             SDKConfiguration = new SDKConfig()
@@ -107,8 +110,8 @@ namespace WingspanBookkeeping
                 serverUrl = _serverUrl
             };
 
-            BenefitsEnrollment = new BenefitsEnrollment(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            BenefitsService = new BenefitsService(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
+            BenefitsEnrollment = new BenefitsEnrollment(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            BenefitsService = new BenefitsService(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
         }
     }
 }
