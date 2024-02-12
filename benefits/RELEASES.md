@@ -110,3 +110,13 @@ Based on:
 - [csharp v4.0.0] benefits
 ### Releases
 - [NuGet v4.0.0] https://www.nuget.org/packages/WingspanBenefits/4.0.0 - benefits
+
+## 2024-02-12 01:26:36
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 https://docs.wingspan.app/openapi/6470f38d65c260000c025474
+- Speakeasy CLI 1.177.1 (2.252.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v4.1.0] benefits
+### Releases
+- [NuGet v4.1.0] https://www.nuget.org/packages/WingspanBenefits/4.1.0 - benefits
