@@ -53,18 +53,18 @@ namespace WingspanFiles
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "4.0.0";
-        private const string _sdkGenVersion = "2.248.6";
+        private const string _sdkVersion = "4.1.0";
+        private const string _sdkGenVersion = "2.252.2";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 4.0.0 2.248.6 1.0.0 WingspanFiles";
+        private const string _userAgent = "speakeasy-sdk/csharp 4.1.0 2.252.2 1.0.0 WingspanFiles";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
 
-        public BenefitsEnrollment(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
+        public BenefitsEnrollment(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
-            _securityClient = securityClient;
+            _securitySource = securitySource;
             _serverUrl = serverUrl;
             SDKConfiguration = config;
         }
@@ -83,8 +83,12 @@ namespace WingspanFiles
             httpRequest.Headers.Add("user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -102,11 +106,12 @@ namespace WingspanFiles
                 {
                     response.Enrollment = JsonConvert.DeserializeObject<Enrollment>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<GetBenefitsPlanEnrollmentResponse> GetBenefitsPlanEnrollmentAsync()
@@ -118,8 +123,12 @@ namespace WingspanFiles
             httpRequest.Headers.Add("user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -137,11 +146,12 @@ namespace WingspanFiles
                 {
                     response.Classes = JsonConvert.DeserializeObject<List<PlanEnrollment>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<GetBenefitsPlanEnrollmentIdResponse> GetBenefitsPlanEnrollmentIdAsync(string id)
@@ -157,8 +167,12 @@ namespace WingspanFiles
             httpRequest.Headers.Add("user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -176,11 +190,12 @@ namespace WingspanFiles
                 {
                     response.PlanEnrollment = JsonConvert.DeserializeObject<PlanEnrollment>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
     }
 }
