@@ -4,17 +4,17 @@ management:
   docChecksum: a394825e1c1bc4930882a784d6d637e8
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.252.2
-  releaseVersion: 4.1.0
-  configChecksum: 049a54b9fb62055c77b03388b71c3e5a
+  generationVersion: 2.262.2
+  releaseVersion: 4.1.1
+  configChecksum: 8c1cbeea3ed70ecf1d38f7f9e1eb6445
   repoURL: https://github.com/wingspanHQ/client-sdk-csharp.git
   repoSubDirectory: payments
   published: true
 features:
   csharp:
-    core: 3.3.1
+    core: 3.3.2
     flattening: 2.81.1
-    globalSecurity: 2.83.0
+    globalSecurity: 2.83.1
     globalServerURLs: 2.82.2
 generatedFiles:
   - WingspanPayments/BenefitsEnrollment.cs
