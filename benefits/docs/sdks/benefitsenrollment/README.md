@@ -26,7 +26,7 @@ var sdk = new SDK(security: new Security() {
         BearerAuth = "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync(id: "string");
+var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync(id: "<value>");
 
 // handle response
 ```
@@ -83,7 +83,7 @@ var sdk = new SDK(security: new Security() {
         BearerAuth = "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-var res = await sdk.BenefitsEnrollment.GetBenefitsPlanEnrollmentIdAsync(id: "string");
+var res = await sdk.BenefitsEnrollment.GetBenefitsPlanEnrollmentIdAsync(id: "<value>");
 
 // handle response
 ```

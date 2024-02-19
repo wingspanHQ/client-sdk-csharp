@@ -51,7 +51,7 @@ var sdk = new SDK(security: new Security() {
     });
 
 var res = await sdk.BenefitsService.PatchBenefitsServiceIdAsync(
-    id: "string",
+    id: "<value>",
     serviceEnablementUpdate: new ServiceEnablementUpdate() {
     Enabled = false,
 });
