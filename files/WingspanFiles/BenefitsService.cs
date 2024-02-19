@@ -51,10 +51,10 @@ namespace WingspanFiles
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "4.1.0";
-        private const string _sdkGenVersion = "2.252.2";
+        private const string _sdkVersion = "4.1.1";
+        private const string _sdkGenVersion = "2.262.2";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 4.1.0 2.252.2 1.0.0 WingspanFiles";
+        private const string _userAgent = "speakeasy-sdk/csharp 4.1.1 2.262.2 1.0.0 WingspanFiles";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
