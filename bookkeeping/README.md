@@ -36,7 +36,7 @@ This SDK supports the following security scheme globally:
 
 | Name         | Type         | Scheme       |
 | ------------ | ------------ | ------------ |
-| `bearerAuth` | http         | HTTP Bearer  |
+| `BearerAuth` | http         | HTTP Bearer  |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
 ```csharp
@@ -48,7 +48,7 @@ var sdk = new SDK(security: new Security() {
         BearerAuth = "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync(id: "string");
+var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync(id: "<value>");
 
 // handle response
 ```
