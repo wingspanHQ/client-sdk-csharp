@@ -51,10 +51,10 @@ namespace WingspanBookkeeping
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "4.1.1";
-        private const string _sdkGenVersion = "2.262.2";
+        private const string _sdkVersion = "4.2.0";
+        private const string _sdkGenVersion = "2.272.4";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 4.1.1 2.262.2 1.0.0 WingspanBookkeeping";
+        private const string _userAgent = "speakeasy-sdk/csharp 4.2.0 2.272.4 1.0.0 WingspanBookkeeping";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
@@ -71,12 +71,12 @@ namespace WingspanBookkeeping
         public async Task<GetBenefitsServiceResponse> GetBenefitsServiceAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+
             var urlString = baseUrl + "/benefits/service";
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -86,14 +86,14 @@ namespace WingspanBookkeeping
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetBenefitsServiceResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
@@ -117,16 +117,16 @@ namespace WingspanBookkeeping
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/benefits/service/{id}", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            var serializedBody = RequestBodySerializer.Serialize(request, "ServiceEnablementUpdate", "json");
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "ServiceEnablementUpdate", "json", false, true);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
             }
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -136,14 +136,14 @@ namespace WingspanBookkeeping
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new PatchBenefitsServiceIdResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
