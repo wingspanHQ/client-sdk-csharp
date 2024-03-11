@@ -10,7 +10,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 csharp:
-  version: 4.2.0
+  version: 4.2.1
   author: Wingspan Networks, Inc.
   dotnetVersion: net5.0
   flattenGlobalSecurity: false
