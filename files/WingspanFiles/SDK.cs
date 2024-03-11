@@ -18,8 +18,6 @@ namespace WingspanFiles
     using WingspanFiles.Models.Shared;
     using WingspanFiles.Utils;
 
-
-
     /// <summary>
     /// Wingspan Benefits API: Benefits
     /// </summary>
@@ -36,15 +34,17 @@ namespace WingspanFiles
         /// </summary>
         public IBenefitsService BenefitsService { get; }
     }
-    
+
     public class SDKConfig
     {
-        public static string[] ServerList = new string[]
-        {
+        /// <summary>
+        /// List of server URLs available to the SDK.
+        /// </summary>
+        public static readonly string[] ServerList = {
             "https://api.wingspan.app",
             "https://stagingapi.wingspan.app",
         };
-        /// Contains the list of servers available to the SDK
+
         public string serverUrl = "";
         public int serverIndex = 0;
 
@@ -66,10 +66,10 @@ namespace WingspanFiles
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "4.2.0";
-        private const string _sdkGenVersion = "2.272.4";
+        private const string _sdkVersion = "4.2.1";
+        private const string _sdkGenVersion = "2.279.1";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 4.2.0 2.272.4 1.0.0 WingspanFiles";
+        private const string _userAgent = "speakeasy-sdk/csharp 4.2.1 2.279.1 1.0.0 WingspanFiles";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _defaultClient;
@@ -81,6 +81,10 @@ namespace WingspanFiles
         {
             if (serverIndex != null)
             {
+                if (serverIndex.Value < 0 || serverIndex.Value >= SDKConfig.ServerList.Length)
+                {
+                    throw new Exception($"Invalid server index {serverIndex.Value}");
+                }
                 _serverIndex = serverIndex.Value;
             }
 

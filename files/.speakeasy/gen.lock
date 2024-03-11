@@ -3,10 +3,10 @@ id: 266d1d31-1fb0-4969-87b7-41edf49f3173
 management:
   docChecksum: a394825e1c1bc4930882a784d6d637e8
   docVersion: 1.0.0
-  speakeasyVersion: internal
-  generationVersion: 2.272.4
-  releaseVersion: 4.2.0
-  configChecksum: b4ef603e4e796d6ca127137277361ce4
+  speakeasyVersion: 1.205.0
+  generationVersion: 2.279.1
+  releaseVersion: 4.2.1
+  configChecksum: 1dfd2d47fe9f44d0e6bd2faee0a2b56b
   repoURL: https://github.com/wingspanHQ/client-sdk-csharp.git
   repoSubDirectory: files
   published: true
@@ -14,8 +14,8 @@ features:
   csharp:
     core: 3.4.3
     flattening: 2.81.1
-    globalSecurity: 2.83.2
-    globalServerURLs: 2.82.2
+    globalSecurity: 2.83.3
+    globalServerURLs: 2.82.3
 generatedFiles:
   - WingspanFiles/BenefitsEnrollment.cs
   - WingspanFiles/BenefitsService.cs

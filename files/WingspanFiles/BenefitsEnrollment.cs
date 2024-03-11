@@ -53,10 +53,10 @@ namespace WingspanFiles
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "4.2.0";
-        private const string _sdkGenVersion = "2.272.4";
+        private const string _sdkVersion = "4.2.1";
+        private const string _sdkGenVersion = "2.279.1";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 4.2.0 2.272.4 1.0.0 WingspanFiles";
+        private const string _userAgent = "speakeasy-sdk/csharp 4.2.1 2.279.1 1.0.0 WingspanFiles";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
@@ -68,7 +68,6 @@ namespace WingspanFiles
             _serverUrl = serverUrl;
             SDKConfiguration = config;
         }
-        
 
         public async Task<GetBenefitsEnrollmentIdResponse> GetBenefitsEnrollmentIdAsync(string id)
         {
@@ -111,7 +110,6 @@ namespace WingspanFiles
             return response;
         }
 
-        
 
         public async Task<GetBenefitsPlanEnrollmentResponse> GetBenefitsPlanEnrollmentAsync()
         {
@@ -151,7 +149,6 @@ namespace WingspanFiles
             return response;
         }
 
-        
 
         public async Task<GetBenefitsPlanEnrollmentIdResponse> GetBenefitsPlanEnrollmentIdAsync(string id)
         {
@@ -194,6 +191,5 @@ namespace WingspanFiles
             return response;
         }
 
-        
     }
 }
