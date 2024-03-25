@@ -12,6 +12,7 @@ namespace WingspanPayments.Models.Shared
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WingspanPayments.Models.Shared;
     
     public class PlanEnrollment
     {
