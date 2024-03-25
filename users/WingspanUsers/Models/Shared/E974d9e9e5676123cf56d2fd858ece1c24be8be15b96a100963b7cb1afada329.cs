@@ -11,6 +11,7 @@
 namespace WingspanUsers.Models.Shared
 {
     using Newtonsoft.Json;
+    using WingspanUsers.Models.Shared;
     
     public class E974d9e9e5676123cf56d2fd858ece1c24be8be15b96a100963b7cb1afada329
     {

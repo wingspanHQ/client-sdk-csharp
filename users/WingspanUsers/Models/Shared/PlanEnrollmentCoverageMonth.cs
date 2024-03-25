@@ -11,6 +11,7 @@
 namespace WingspanUsers.Models.Shared
 {
     using Newtonsoft.Json;
+    using WingspanUsers.Models.Shared;
     
     public class PlanEnrollmentCoverageMonth
     {
