@@ -141,3 +141,13 @@ Based on:
 - [csharp v4.2.1] bookkeeping
 ### Releases
 - [NuGet v4.2.1] https://www.nuget.org/packages/WingspanBookkeeping/4.2.1 - bookkeeping
+
+## 2024-03-25 01:28:01
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 https://docs.wingspan.app/openapi/6470f38d65c260000c025474
+- Speakeasy CLI 1.221.0 (2.287.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v4.2.2] bookkeeping
+### Releases
+- [NuGet v4.2.2] https://www.nuget.org/packages/WingspanBookkeeping/4.2.2 - bookkeeping

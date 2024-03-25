@@ -12,6 +12,7 @@ namespace WingspanBookkeeping.Models.Shared
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WingspanBookkeeping.Models.Shared;
     
     public class ServiceEnablementResponse
     {

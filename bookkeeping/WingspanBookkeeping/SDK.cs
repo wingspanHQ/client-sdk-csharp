@@ -66,10 +66,10 @@ namespace WingspanBookkeeping
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "4.2.1";
-        private const string _sdkGenVersion = "2.279.1";
+        private const string _sdkVersion = "4.2.2";
+        private const string _sdkGenVersion = "2.287.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 4.2.1 2.279.1 1.0.0 WingspanBookkeeping";
+        private const string _userAgent = "speakeasy-sdk/csharp 4.2.2 2.287.0 1.0.0 WingspanBookkeeping";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _defaultClient;
