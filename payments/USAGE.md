@@ -1,14 +1,15 @@
-<!-- Start SDK Example Usage -->
-
-
+<!-- Start SDK Example Usage [usage] -->
 ```csharp
-using SDK;
-using SDK.Models.Operations;
+using WingspanPayments;
+using WingspanPayments.Models.Shared;
+using WingspanPayments.Models.Operations;
 
-var sdk = new SDKSDK();
+var sdk = new SDK(security: new Security() {
+        BearerAuth = "<YOUR_BEARER_TOKEN_HERE>",
+    });
 
-var res = await sdk.SDK.GetBenefitsEnrollmentIdAsync("string");
+var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync(id: "<value>");
 
 // handle response
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
