@@ -40,6 +40,7 @@ namespace WingspanBenefits.Utils
             {
                 new IsoDateTimeSerializer(),
                 new EnumSerializer(),
+                new FlexibleObjectDeserializer()
             };
         }
 
