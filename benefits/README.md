@@ -14,7 +14,7 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 - [ ] ♻️ Refine your SDK quickly by iterating locally with the [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy)
 - [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/productionize-sdks/publish-sdks)
 - [ ] ✨ When ready to productionize, delete this section from the README
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### Nuget
@@ -22,37 +22,91 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 ```bash
 dotnet add package WingspanBenefits
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
+### Example
+
 ```csharp
-using SDK;
-using SDK.Models.Operations;
+using WingspanBenefits;
+using WingspanBenefits.Models.Shared;
+using WingspanBenefits.Models.Operations;
 
-var sdk = new SDKSDK();
+var sdk = new SDK(security: new Security() {
+        BearerAuth = "<YOUR_BEARER_TOKEN_HERE>",
+    });
 
-var res = await sdk.SDK.GetBenefitsEnrollmentIdAsync("string");
+var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync(id: "<value>");
 
 // handle response
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [SDK](docs/sdks/sdk/README.md)
+### [BenefitsEnrollment](docs/sdks/benefitsenrollment/README.md)
 
-* [GetBenefitsEnrollmentId](docs/sdks/sdk/README.md#getbenefitsenrollmentid) - Retrieve Enrollment Details for a Specific Member
-* [GetBenefitsPlanEnrollment](docs/sdks/sdk/README.md#getbenefitsplanenrollment) - List all plan enrollments
-* [GetBenefitsPlanEnrollmentId](docs/sdks/sdk/README.md#getbenefitsplanenrollmentid) - Get a particular plan enrollment by ID
-* [GetBenefitsService](docs/sdks/sdk/README.md#getbenefitsservice) - Retrieve Current Benefits Service Status
-* [PatchBenefitsServiceId](docs/sdks/sdk/README.md#patchbenefitsserviceid) - Modify Benefits Service Status
-<!-- End SDK Available Operations -->
+* [GetBenefitsEnrollmentId](docs/sdks/benefitsenrollment/README.md#getbenefitsenrollmentid) - Retrieve Enrollment Details for a Specific Member
+* [GetBenefitsPlanEnrollment](docs/sdks/benefitsenrollment/README.md#getbenefitsplanenrollment) - List all plan enrollments
+* [GetBenefitsPlanEnrollmentId](docs/sdks/benefitsenrollment/README.md#getbenefitsplanenrollmentid) - Get a particular plan enrollment by ID
 
-<!-- Start Dev Containers -->
+### [BenefitsService](docs/sdks/benefitsservice/README.md)
 
-<!-- End Dev Containers -->
+* [GetBenefitsService](docs/sdks/benefitsservice/README.md#getbenefitsservice) - Retrieve Current Benefits Service Status
+* [PatchBenefitsServiceId](docs/sdks/benefitsservice/README.md#patchbenefitsserviceid) - Modify Benefits Service Status
+<!-- End Available Resources and Operations [operations] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `serverIndex: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.wingspan.app` | None |
+| 1 | `https://stagingapi.wingspan.app` | None |
+
+
+
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `serverUrl: str` optional parameter when initializing the SDK client instance. For example:
+<!-- End Server Selection [server] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name         | Type         | Scheme       |
+| ------------ | ------------ | ------------ |
+| `BearerAuth` | http         | HTTP Bearer  |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
+```csharp
+using WingspanBenefits;
+using WingspanBenefits.Models.Shared;
+using WingspanBenefits.Models.Operations;
+
+var sdk = new SDK(security: new Security() {
+        BearerAuth = "<YOUR_BEARER_TOKEN_HERE>",
+    });
+
+var res = await sdk.BenefitsEnrollment.GetBenefitsEnrollmentIdAsync(id: "<value>");
+
+// handle response
+```
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
